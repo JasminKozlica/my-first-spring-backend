@@ -3,9 +3,16 @@
 <head>
     <title>Hello</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+            rel="stylesheet"
+            th:href="@{'/greetingstyles/' + ${cssFileName.isEmpty() ? 'style-jasmin' : cssFileName} + '.css'}"
+            type="text/css"
+    >
 </head>
 <body>
 
-<p th:text="'Hello World '+ ${inputName} + '1'"></p>
+<p th:text="'Hello ' + ${inputName}  "></p>
+
+<p>  Das ist Algemeine seite</p>
 </body>
 </html>

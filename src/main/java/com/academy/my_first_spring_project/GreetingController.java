@@ -9,19 +9,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class GreetingController {
     @GetMapping("/greeting")
-    public String greeting( @RequestParam(name ="n",required = false,defaultValue = "Welt") String someName,Model model) {
+    public String greeting(
+            @RequestParam(name = "cssFileName" ,required = false,defaultValue = "") String cssString,
+            @RequestParam(name ="n",required = false,defaultValue = "Welt") String someName,
+            Model model
+    ) {
 
         model.addAttribute("inputName",someName);
+        model.addAttribute("cssFileName",cssString);
         return "greeting";
     }
     @GetMapping("/person")
     @ResponseBody
-    public Person personJson(){
-        Person person = new Person();
-        person.setId(1L);
-        person.setName("Max");
+    public Person personJson() {
 
 
+        Person person = Person.builder()
+                .id(1L)
+                .name("Paul")
+                .build();
         return person;
     }
 }
